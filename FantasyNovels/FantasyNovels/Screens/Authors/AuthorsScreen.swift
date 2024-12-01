@@ -10,6 +10,8 @@ import SwiftUI
 /// Экран выбора авторов фантастической литературы
 struct AuthorsScreen: View {
 
+    // MARK: - Properties
+
     var body: some View {
         Text("AuthorsScreen")
     }

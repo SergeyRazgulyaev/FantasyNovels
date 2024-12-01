@@ -6,13 +6,13 @@
 //
 
 /// Наименования табов
-enum Tabs: Hashable {
+enum Tabs: String {
     /// Витрина
-    case showcase
+    case showcase = "Витрина"
     /// Жанры
-    case genres
+    case genres = "Жанры"
     /// Авторы
-    case authors
+    case authors = "Авторы"
     /// Избранное
-    case favorites
+    case favorites = "Избранное"
 }

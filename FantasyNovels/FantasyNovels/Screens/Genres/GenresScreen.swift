@@ -7,61 +7,53 @@
 
 import SwiftUI
 
-/// Виджет жанров фантастической литературы
-struct GenresWidget: Identifiable {
-    /// Заголовок виджета
-    let title: String
-    /// Описание виджета
-    let description: String
-    /// Цвет описания виджета
-    let descriptionForegroundColor: Color
-    /// Иконка виджета
-    let imageName: String
-    /// Цвет иконки виджета
-    let imageForegroundColor: Color
-    /// Идентификатор
-    let id: Int = UUID().hashValue
-}
-
 /// Экран жанров фантастической литературы
 struct GenresScreen: View {
 
     // MARK: - Constants
 
     private enum Constants {
-        static let showcaseTitle: String = "Фантастическая литература"
-        static let firstWidgetTitle: String = "Лучшие зарубежные авторы"
-        static let secondWidgetTitle: String = "Лучшие российские авторы"
-        static let thirdWidgetTitle: String = "Вся мировая фантастика"
+        static let genresTitle: String = "Жанры\nфантастической литературы"
+        static let firstGenreTitle: String = "Лучшие зарубежные авторы"
+        static let secondGenreTitle: String = "Лучшие российские авторы"
+        static let thirdGenreTitle: String = "Вся мировая фантастика"
 
-        static let firstWidgetDescription: String =  "Читай лучших зарубежных авторов мировой фантастики!"
-        static let secondWidgetDescription: String =  "Читай лучших российских авторов мировой фантастики!"
-        static let thirdWidgetDescription: String =  "Все произведения мировой фантастики!"
+        static let firstGenreDescription: String =  "Читай лучших зарубежных авторов мировой фантастики!"
+        static let secondGenreDescription: String =  "Читай лучших российских авторов мировой фантастики!"
+        static let thirdGenreDescription: String =  "Все произведения мировой фантастики"
 
-        static let widgetsImageSystemName: String = "books.vertical.fill"
+        static let genreImageSystemName: String = "books.vertical.fill"
 
-        static let firstWidgetImageForegroundColor: Color = .blue
-        static let secondWidgetImageForegroundColor: Color = .red
-        static let thirdWidgetImageForegroundColor: Color = .green
+        static let firstGenreImageForegroundColor: Color = .blue
+        static let secondGenreImageForegroundColor: Color = .red
+        static let thirdGenreImageForegroundColor: Color = .green
         static let descriptionForegroundColor: Color = .gray
+
+        static let hStackSpacing: CGFloat = 10.0
+        static let genreImageWidth: CGFloat = 30.0
+        static let genreImageHeight: CGFloat = 30.0
+        static let genrePadding: CGFloat = 5.0
     }
 
-    let widgets: [GenresWidget] = [
-        .init(title: Constants.firstWidgetTitle,
-              description: Constants.firstWidgetDescription,
-              descriptionForegroundColor: Constants.descriptionForegroundColor,
-              imageName: Constants.widgetsImageSystemName,
-              imageForegroundColor: Constants.firstWidgetImageForegroundColor),
-        .init(title: Constants.secondWidgetTitle,
-              description: Constants.secondWidgetDescription,
-              descriptionForegroundColor: Constants.descriptionForegroundColor,
-              imageName: Constants.widgetsImageSystemName,
-              imageForegroundColor: Constants.secondWidgetImageForegroundColor),
-        .init(title: Constants.thirdWidgetTitle,
-              description: Constants.thirdWidgetDescription,
-              descriptionForegroundColor: Constants.descriptionForegroundColor,
-              imageName: Constants.widgetsImageSystemName,
-              imageForegroundColor: Constants.thirdWidgetImageForegroundColor)
+    // MARK: - Properties
+
+    /// Жанры фантастической литературы
+    private let genres: [GenresCellModel] = [
+        .init(title: Constants.firstGenreTitle,
+              description: Constants.firstGenreDescription,
+              descriptionTextColor: Constants.descriptionForegroundColor,
+              imageName: Constants.genreImageSystemName,
+              imageForegroundColor: Constants.firstGenreImageForegroundColor),
+        .init(title: Constants.secondGenreTitle,
+              description: Constants.secondGenreDescription,
+              descriptionTextColor: Constants.descriptionForegroundColor,
+              imageName: Constants.genreImageSystemName,
+              imageForegroundColor: Constants.secondGenreImageForegroundColor),
+        .init(title: Constants.thirdGenreTitle,
+              description: Constants.thirdGenreDescription,
+              descriptionTextColor: Constants.descriptionForegroundColor,
+              imageName: Constants.genreImageSystemName,
+              imageForegroundColor: Constants.thirdGenreImageForegroundColor)
     ]
 
     var body: some View {
@@ -69,28 +61,31 @@ struct GenresScreen: View {
         NavigationView {
 
             VStack {
-                Text(Constants.showcaseTitle)
-                    .font(.largeTitle)
+                Text(Constants.genresTitle)
+                    .font(.headline)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
 
-                List(widgets, id: \.id) { item in
+                List(genres) { item in
                     NavigationLink(destination: Text(item.title)) {
                         VStack(alignment: .leading) {
-                            HStack(spacing: 5.0) {
+                            HStack(spacing: Constants.hStackSpacing) {
                                 Image(systemName: item.imageName)
+                                    .resizable()
+                                    .frame(width: Constants.genreImageWidth,
+                                           height: Constants.genreImageHeight)
                                     .foregroundColor(item.imageForegroundColor)
                                 Text(item.title)
                                     .font(.headline)
                                     .fontWeight(.medium)
                                     .multilineTextAlignment(.leading)
                             }
-                            .padding(.all, 5.0)
+                            .padding(.all, Constants.genrePadding)
 
                             Text(item.description)
-                                .foregroundColor(item.descriptionForegroundColor)
+                                .foregroundColor(item.descriptionTextColor)
                                 .multilineTextAlignment(.leading)
-                                .padding([.leading, .bottom, .trailing], 5.0)
+                                .padding([.leading, .bottom, .trailing], Constants.genrePadding)
                         }
                     }
                 }

@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct FantasyNovelsApp: App {
 
+    // MARK: - Properties
+
     var body: some Scene {
         WindowGroup {
             ContentView()

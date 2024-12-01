@@ -9,19 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
 
-    // Constants
+    // MARK: - Constants
 
     private enum Constants {
-        static let showcaseScreenTabItemName: String = "Витрина"
-        static let genresScreenTabItemName: String = "Жанры"
-        static let authorsScreenTabItemName: String = "Авторы"
-        static let favoritesScreenTabItemName: String = "Избранное"
-
         static let showcaseScreenTabItemImageName: String = "books.vertical.fill"
         static let genresScreenTabItemImageName: String = "theatermasks.fill"
         static let authorsScreenTabItemImageName: String = "sunglasses.fill"
         static let favoritesScreenTabItemImageName: String = "star.fill"
     }
+
+    // MARK: - Properties
 
     /// Выбранный таб
     @State var tabSelection: Tabs = .showcase
@@ -31,25 +28,25 @@ struct ContentView: View {
             ShowcaseScreen()
                 .tag(Tabs.showcase)
                 .tabItem {
-                    Label(Constants.showcaseScreenTabItemName,
+                    Label(Tabs.showcase.rawValue,
                           systemImage: Constants.showcaseScreenTabItemImageName)
                 }
             GenresScreen()
                 .tag(Tabs.genres)
                 .tabItem {
-                    Label(Constants.genresScreenTabItemName,
+                    Label(Tabs.genres.rawValue,
                           systemImage: Constants.genresScreenTabItemImageName)
                 }
             AuthorsScreen()
                 .tag(Tabs.authors)
                 .tabItem {
-                    Label(Constants.authorsScreenTabItemName,
+                    Label(Tabs.authors.rawValue,
                           systemImage: Constants.authorsScreenTabItemImageName)
                 }
             FavoritesScreen()
                 .tag(Tabs.favorites)
                 .tabItem {
-                    Label(Constants.favoritesScreenTabItemName,
+                    Label(Tabs.favorites.rawValue,
                           systemImage: Constants.favoritesScreenTabItemImageName)
                 }
         }.tabViewStyle(.tabBarOnly)
