@@ -6,13 +6,13 @@
 //
 
 /// Наименования табов
-enum TabSelections: Hashable {
+enum Tabs: Hashable {
     /// Витрина
     case showcase
-    /// Избранное
-    case favorites
     /// Жанры
     case genres
     /// Авторы
     case authors
+    /// Избранное
+    case favorites
 }
