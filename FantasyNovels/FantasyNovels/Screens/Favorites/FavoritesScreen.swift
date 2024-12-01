@@ -13,7 +13,7 @@ struct FavoritesScreen: View {
     // MARK: - Properties
 
     var body: some View {
-        Text("FavoritesScreen")
+        Text("Экран избранного")
     }
 }
 

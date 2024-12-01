@@ -15,8 +15,8 @@ struct AuthorsScreen: View {
     private enum Constants {
         static let authorsTitle: String = "Авторы"
         static let hStackSpacing: CGFloat = 10.0
-        static let genreImageCornerRadius: CGFloat = 10.0
-        static let genrePadding: CGFloat = 5.0
+        static let authorsImageCornerRadius: CGFloat = 10.0
+        static let authorsImagePadding: CGFloat = 5.0
     }
 
     // MARK: - Properties
@@ -37,12 +37,12 @@ struct AuthorsScreen: View {
                             .resizable()
                             .scaledToFit()
                             .foregroundColor(item.imageForegroundColor)
-                            .cornerRadius(Constants.genreImageCornerRadius)
-                            .padding(.all, Constants.genrePadding)
+                            .cornerRadius(Constants.authorsImageCornerRadius)
+                            .padding(.all, Constants.authorsImagePadding)
                         Text(item.description)
                             .foregroundColor(item.descriptionTextColor)
                             .multilineTextAlignment(.leading)
-                            .padding([.leading, .bottom, .trailing], Constants.genrePadding)
+                            .padding([.leading, .bottom, .trailing], Constants.authorsImagePadding)
                     }
                 }
             }.navigationBarTitle(Constants.authorsTitle)

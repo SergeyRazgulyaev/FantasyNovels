@@ -12,7 +12,7 @@ enum Tabs: String {
     /// Авторы
     case authors = "Авторы"
     /// Жанры
-    case genres = "Жанры"
+    case books = "Книги"
     /// Избранное
     case favorites = "Избранное"
 }

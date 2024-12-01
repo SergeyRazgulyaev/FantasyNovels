@@ -18,10 +18,16 @@ struct ShowcaseScreen: View {
         static let readButtonLabel: String = "Читать"
 
         static let readButtonTextColor: Color = .black
+        static let readButtonColor: Color = .mint
 
         static let showcaseVStackSpacing: CGFloat = 5.0
+        static let showcaseVStackVerticalPadding: CGFloat = 20.0
         static let showcaseTitleVerticalPadding: CGFloat = 10.0
-        static let buttonVerticalPadding: CGFloat = 30.0
+
+        static let readButtonWidth: CGFloat = 250
+        static let readButtonHeight: CGFloat = 30
+        static let readButtonVerticalPadding: CGFloat = 10.0
+        static let readButtonCornerRadius: CGFloat = 10.0
     }
 
     // MARK: - Properties
@@ -36,18 +42,25 @@ struct ShowcaseScreen: View {
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding(.vertical, Constants.showcaseTitleVerticalPadding)
+
                 Image(Constants.showcaseImageName,
                       label: Text(Constants.showcaseTitle))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-            }
+                .padding(.vertical, Constants.showcaseTitleVerticalPadding)
 
-            Button(action: {
-                print("Action")
-            }) {
-                Text(Constants.readButtonLabel)
-                    .foregroundColor(Constants.readButtonTextColor)
-            }.padding(.vertical, Constants.buttonVerticalPadding)
+                Button(action: {
+                    print("Action")
+                }) {
+                    Text(Constants.readButtonLabel)
+                        .foregroundColor(Constants.readButtonTextColor)
+                        .frame(width: Constants.readButtonWidth,
+                               height: Constants.readButtonHeight,
+                               alignment: .center)
+                        .background(Constants.readButtonColor)
+                        .cornerRadius(Constants.readButtonCornerRadius)
+                }.padding(.vertical, Constants.readButtonVerticalPadding)
+            }.padding(.bottom, Constants.showcaseVStackVerticalPadding)
         }
     }
 }
