@@ -1,5 +1,5 @@
 //
-//  GenresCellModel.swift
+//  AuthorsCellModel.swift
 //  FantasyNovels
 //
 //  Created by Sergey Razgulyaev on 01.12.2024.
@@ -7,8 +7,8 @@
 
 import SwiftUICore
 
-/// Модель ячейки для отображения жанров фантастической литературы
-struct GenresCellModel: Identifiable {
+/// Модель ячейки для отображения авторов фантастической литературы
+struct AuthorsCellModel: Identifiable {
     /// Заголовок
     let title: String
     /// Описание
@@ -20,5 +20,5 @@ struct GenresCellModel: Identifiable {
     /// Цвет иконки
     let imageForegroundColor: Color
     /// Идентификатор
-    let id: String = UUID().uuidString
+    let id: Int = UUID().hashValue
 }

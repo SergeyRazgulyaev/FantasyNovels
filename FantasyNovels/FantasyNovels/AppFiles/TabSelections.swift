@@ -9,10 +9,10 @@
 enum Tabs: String {
     /// Витрина
     case showcase = "Витрина"
-    /// Жанры
-    case genres = "Жанры"
     /// Авторы
     case authors = "Авторы"
+    /// Жанры
+    case genres = "Жанры"
     /// Избранное
     case favorites = "Избранное"
 }

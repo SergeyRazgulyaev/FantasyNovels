@@ -13,8 +13,8 @@ struct ContentView: View {
 
     private enum Constants {
         static let showcaseScreenTabItemImageName: String = "books.vertical.fill"
-        static let genresScreenTabItemImageName: String = "theatermasks.fill"
         static let authorsScreenTabItemImageName: String = "sunglasses.fill"
+        static let genresScreenTabItemImageName: String = "theatermasks.fill"
         static let favoritesScreenTabItemImageName: String = "star.fill"
     }
 
@@ -31,17 +31,17 @@ struct ContentView: View {
                     Label(Tabs.showcase.rawValue,
                           systemImage: Constants.showcaseScreenTabItemImageName)
                 }
-            GenresScreen()
-                .tag(Tabs.genres)
-                .tabItem {
-                    Label(Tabs.genres.rawValue,
-                          systemImage: Constants.genresScreenTabItemImageName)
-                }
             AuthorsScreen()
                 .tag(Tabs.authors)
                 .tabItem {
                     Label(Tabs.authors.rawValue,
                           systemImage: Constants.authorsScreenTabItemImageName)
+                }
+            GenresScreen()
+                .tag(Tabs.genres)
+                .tabItem {
+                    Label(Tabs.genres.rawValue,
+                          systemImage: Constants.genresScreenTabItemImageName)
                 }
             FavoritesScreen()
                 .tag(Tabs.favorites)
