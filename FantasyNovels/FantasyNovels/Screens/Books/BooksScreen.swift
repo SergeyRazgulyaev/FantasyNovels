@@ -44,7 +44,3 @@ struct BooksScreen: View {
         }
     }
 }
-
-#Preview {
-    BooksScreen()
-}

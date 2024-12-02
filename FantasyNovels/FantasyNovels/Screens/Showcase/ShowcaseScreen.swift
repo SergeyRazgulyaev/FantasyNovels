@@ -15,7 +15,7 @@ struct ShowcaseScreen: View {
     private enum Constants {
         static let showcaseTitle: String = "Зарубежная и российская фантастика"
         static let showcaseImageName: String = "space_ship"
-        static let readButtonLabel: String = "Читать"
+        static let readButtonLabel: String = "Читать все произведения"
 
         static let readButtonTextColor: Color = .black
         static let readButtonColor: Color = .mint
@@ -32,39 +32,41 @@ struct ShowcaseScreen: View {
 
     // MARK: - Properties
 
+    /// Выбранный таб
+    @Binding var tabSelection: Tabs
+    /// Показатель перехода на экран просмотра произведений всех авторов
+    @Binding var isAllAuthorsScreenActive: Bool
+
     var body: some View {
-        VStack(alignment: .center) {
+        NavigationView {
+            VStack(alignment: .center) {
+                ScrollView(.vertical) {
+                    VStack(alignment: .center,
+                           spacing: Constants.showcaseVStackSpacing) {
+                        Image(Constants.showcaseImageName,
+                              label: Text(Constants.showcaseTitle))
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .padding(.vertical, Constants.showcaseTitleVerticalPadding)
 
-            VStack(alignment: .center,
-                   spacing: Constants.showcaseVStackSpacing) {
-                Text(Constants.showcaseTitle)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical, Constants.showcaseTitleVerticalPadding)
+                        Button(action: {
+                            tabSelection = .authors
+                            isAllAuthorsScreenActive = true
+                        }) {
+                            Text(Constants.readButtonLabel)
+                                .foregroundColor(Constants.readButtonTextColor)
+                                .frame(width: Constants.readButtonWidth,
+                                       height: Constants.readButtonHeight,
+                                       alignment: .center)
+                                .background(Constants.readButtonColor)
+                                .cornerRadius(Constants.readButtonCornerRadius)
+                        }.padding(.vertical, Constants.readButtonVerticalPadding)
 
-                Image(Constants.showcaseImageName,
-                      label: Text(Constants.showcaseTitle))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .padding(.vertical, Constants.showcaseTitleVerticalPadding)
-
-                Button(action: {
-                    print("Action")
-                }) {
-                    Text(Constants.readButtonLabel)
-                        .foregroundColor(Constants.readButtonTextColor)
-                        .frame(width: Constants.readButtonWidth,
-                               height: Constants.readButtonHeight,
-                               alignment: .center)
-                        .background(Constants.readButtonColor)
-                        .cornerRadius(Constants.readButtonCornerRadius)
-                }.padding(.vertical, Constants.readButtonVerticalPadding)
-            }.padding(.bottom, Constants.showcaseVStackVerticalPadding)
+                    }.padding(.bottom, Constants.showcaseVStackVerticalPadding)
+                }
+            }
+            .navigationTitle(Text(Constants.showcaseTitle))
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
-}
-
-#Preview {
-    ShowcaseScreen()
 }

@@ -16,7 +16,3 @@ struct FavoritesScreen: View {
         Text("Экран избранного")
     }
 }
-
-#Preview {
-    FavoritesScreen()
-}

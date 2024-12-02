@@ -23,11 +23,14 @@ struct AuthorsScreen: View {
 
     /// Авторы фантастической литературы
     private let authorsCells: [AuthorsCellModel] = MockAuthorsCells.cells
+    /// Показатель перехода на экран просмотра произведений всех авторов
+    @Binding var isAllAuthorsScreenActive: Bool
 
     var body: some View {
         NavigationView {
             List(authorsCells) { item in
-                NavigationLink(destination: Text(item.title)) {
+                NavigationLink(destination: Text(item.title),
+                               isActive: $isAllAuthorsScreenActive) {
                     VStack(alignment: .leading) {
                         Text(item.title)
                             .font(.headline)
@@ -48,8 +51,4 @@ struct AuthorsScreen: View {
             }.navigationBarTitle(Constants.authorsTitle)
         }
     }
-}
-
-#Preview {
-    AuthorsScreen()
 }
